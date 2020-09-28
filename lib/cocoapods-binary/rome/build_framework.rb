@@ -42,6 +42,7 @@ def build_for_iosish_platform(sandbox,
   module_name = target.product_module_name
   device_framework_path = "#{build_dir}/#{CONFIGURATION}-#{device}/#{target_name}/#{module_name}.framework"
   simulator_framework_path = "#{build_dir}/#{CONFIGURATION}-#{simulator}/#{target_name}/#{module_name}.framework"
+  bcsymbol_map_path = "#{build_dir}/#{CONFIGURATION}-#{device}"
   output_framework_path = "#{output_path}/#{module_name}.framework"
 
   device_binary = device_framework_path + "/#{module_name}"
