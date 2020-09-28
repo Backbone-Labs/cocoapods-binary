@@ -102,6 +102,13 @@ def build_for_iosish_platform(sandbox,
     File.rename device_dsym, device_dsym_output_path
   end
 
+  # handle the bcsymbolmaps
+  files = `find "#{bcsymbol_map_path}"  -name "*.bcsymbolmap" -type f`
+  files.each_line do |line|
+    Pod::UI.puts line
+    FileUtils.cp_r "#{line}".strip, output_path
+  end
+
   # output
   output_path.mkpath unless output_path.exist?
   FileUtils.rm_r output_framework_path if Dir.exist? output_framework_path
